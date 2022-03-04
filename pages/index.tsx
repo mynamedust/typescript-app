@@ -1,12 +1,28 @@
-import { Button, Htag, P, Tag } from '../components';
-import React from 'react';
+import { Button, Htag, P, Rating, Tag } from '../components';
+import React, { useEffect, useState } from 'react';
 
 
 export default function Home(): JSX.Element {
+
+  const [counter, setCounter] = useState<number>(0);
+
+  useEffect(() => {
+    console.log('Conter = ' + counter);
+    return function cleanyp() {
+      console.log('Unmount');
+    };
+  });
+
+  useEffect(() => {
+    console.log('Mounted');
+  }, []);
+
+  const [rating, setRating] = useState<number>(4);
+
   return (
     <div>
-      <Htag tag='h1'>Текст</Htag >
-      <Button appearance='primary' arrow='right'>Кнопка</Button>
+      <Htag tag='h1'>{counter}</Htag >
+      <Button appearance='primary' arrow='right' onClick={() => setCounter(x => x + 1)}>Кнопка</Button>
       <Button appearance='ghost' arrow='down'>Кнопка</Button>
       <P>Студенты освоят не только hard skills, необходимые для работы веб-дизайнером,
         но и soft skills — навыки, которые позволят эффективно взаимодействовать в команде с менеджерами, разработчиками и маркетологами.
@@ -26,6 +42,7 @@ export default function Home(): JSX.Element {
       <Tag size='m' color='ghost'>маленький</Tag>
       <Tag size='s' color='green'>маленький</Tag>
       <Tag size='m' color='primary'>маленький</Tag>
+      <Rating rating={rating} isEditable setRating={setRating} />
     </div>
 
   );
