@@ -3,7 +3,7 @@
     grid-template-columns: auto 230px minmax(320px, 1200px) auto;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    gap: 0 30px;
+    gap: 40px 30px;
     grid-template-areas:
         ". header header ."
         ". sidebar body ."
@@ -28,7 +28,7 @@
     grid-area: footer;
 }
 
-@media (max-width: 765px) {
+@media (max-width: 860px) {
     .sidebar {
         display: none !important;
     }
@@ -43,5 +43,9 @@
             "header"
             "body"
             "footer";
+    }
+
+    .body {
+        padding: 15px;
     }
 }
